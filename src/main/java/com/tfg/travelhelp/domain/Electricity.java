@@ -14,6 +14,8 @@ import javax.persistence.*;
 @Entity(name = "electricities")
 public class Electricity {
 
+    //https://www.worldstandards.eu/es/electricidad/enchufes-por-pais/ (Para meter datos en la base de datos)
+
     @Schema(description = "Identificador de la electricidad", example = "1", required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
