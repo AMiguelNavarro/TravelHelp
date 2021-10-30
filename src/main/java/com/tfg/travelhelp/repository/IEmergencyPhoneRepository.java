@@ -4,6 +4,9 @@ import com.tfg.travelhelp.domain.EmergencyPhone;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IEmergencyPhoneRepository extends CrudRepository<EmergencyPhone, Long> {
+    List<EmergencyPhone> findAll();
 }
