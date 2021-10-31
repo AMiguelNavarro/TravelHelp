@@ -1,5 +1,6 @@
 package com.tfg.travelhelp.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class Language {
     @Column
     private String name;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "language")
     private List<LanguageCountries> listLanguagesCountries;
 }

@@ -1,5 +1,6 @@
 package com.tfg.travelhelp.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -71,9 +72,11 @@ public class Country {
     private List<Plug> listPlugs; // Relación N:N con plugs solucionada
 
 
+    @JsonBackReference(value = "1")
     @OneToMany(mappedBy = "countryL")
     List<LanguageCountries> listLanguagesCountries;
 
+    @JsonBackReference(value = "2")
     @OneToMany(mappedBy = "countryV")
     List<VaccineCountries> listVaccinesCountries;
 
