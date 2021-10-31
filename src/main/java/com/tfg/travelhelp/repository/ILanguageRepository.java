@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ILanguajeRepository extends CrudRepository<Language, Long> {
+public interface ILanguageRepository extends CrudRepository<Language, Long> {
     List<Language> findAll();
 }
