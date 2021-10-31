@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -29,4 +30,8 @@ public class Vaccine {
     @Schema(description = "Durabilidad", example = "90 días")
     @Column
     private int durability;
+
+    @OneToMany(mappedBy = "vaccine")
+    private List<VaccineCountries> listVaccinesCountries;
+
 }

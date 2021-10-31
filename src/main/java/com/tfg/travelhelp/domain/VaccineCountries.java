@@ -6,24 +6,24 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data @AllArgsConstructor @NoArgsConstructor
-@Entity (name = "languages_countries")
-public class LanguageCountries {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "vaccine_countries")
+public class VaccineCountries {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column
-    private boolean official;
+    private boolean obligatory;
 
     @ManyToOne
-    @JoinColumn(name = "idLanguage")
-    private Language language;
+    @JoinColumn(name = "idVaccine")
+    private Vaccine vaccine;
 
     @ManyToOne
     @JoinColumn(name = "idCountry")
-    private Country countryL;
-
-
+    private Country countryV;
 }

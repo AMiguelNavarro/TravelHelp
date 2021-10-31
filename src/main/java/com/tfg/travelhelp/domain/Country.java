@@ -70,8 +70,12 @@ public class Country {
     )
     private List<Plug> listPlugs; // Relación N:N con plugs solucionada
 
-    @OneToMany(mappedBy = "country")
+
+    @OneToMany(mappedBy = "countryL")
     List<LanguageCountries> listLanguagesCountries;
+
+    @OneToMany(mappedBy = "countryV")
+    List<VaccineCountries> listVaccinesCountries;
 
 
 }
