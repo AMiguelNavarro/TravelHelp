@@ -8,5 +8,5 @@ public interface IVaccineService {
     List<Vaccine> findAllVaccines();
     Vaccine addNewVaccine(Vaccine newVaccine);
     Vaccine modifyVaccine(long idOldVaccine, Vaccine newVaccine);
-    void delteVaccine(long idOldVaccine);
+    void deleteVaccine(long idOldVaccine);
 }

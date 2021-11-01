@@ -30,7 +30,7 @@ public class LanguageController implements ControllersMethods<Language> {
 
     @Operation(summary = "Obtiene un listado con todos los idiomas")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200" , description = "Listado de teléfonos de emergencias", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Language.class))))
+            @ApiResponse(responseCode = "200" , description = "Listado de idiomas", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Language.class))))
     })
     @GetMapping(value = "/language", produces = "application/json")
     @Override
