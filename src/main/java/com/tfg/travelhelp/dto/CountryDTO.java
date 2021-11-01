@@ -12,6 +12,7 @@ public class CountryDTO {
     private String flagImage;
     private String acronym;
     private int numberOfHabitants;
+    private boolean drinkingWater;
     private boolean publicHealthcare;
     private String prefix;
     private long idCoin;
