@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ICityService {
     List<City> finAllCities();
+    List<City> findCitiesFromCountry(long idCountry);
     City addNewCity(CityDTO newCityDto);
     City modifyCity(long idCity, CityDTO newCityDto);
     void deleteCity(long idCity);

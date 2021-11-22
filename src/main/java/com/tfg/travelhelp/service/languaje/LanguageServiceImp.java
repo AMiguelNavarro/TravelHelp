@@ -1,6 +1,7 @@
 package com.tfg.travelhelp.service.languaje;
 
 import com.tfg.travelhelp.domain.Language;
+import com.tfg.travelhelp.dto.ILanguageProjection;
 import com.tfg.travelhelp.exceptions.LanguageNotFoundException;
 import com.tfg.travelhelp.repository.ILanguageRepository;
 import lombok.val;
@@ -18,6 +19,11 @@ public class LanguageServiceImp implements ILanguageService {
     @Override
     public List<Language> findAllLanguages() {
         return languageRepository.findAll();
+    }
+
+    @Override
+    public List<ILanguageProjection> findLanguageFromCountry(long idCountry) {
+        return languageRepository.findLanguageFromCountry(idCountry);
     }
 
     @Override

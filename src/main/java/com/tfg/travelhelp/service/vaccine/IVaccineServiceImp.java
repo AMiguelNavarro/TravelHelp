@@ -1,6 +1,7 @@
 package com.tfg.travelhelp.service.vaccine;
 
 import com.tfg.travelhelp.domain.Vaccine;
+import com.tfg.travelhelp.dto.IVaccineProjection;
 import com.tfg.travelhelp.exceptions.VaccineNotFoundException;
 import com.tfg.travelhelp.repository.IVaccineRepository;
 import lombok.val;
@@ -18,6 +19,11 @@ public class IVaccineServiceImp implements IVaccineService {
     @Override
     public List<Vaccine> findAllVaccines() {
         return vaccineRepository.findAll();
+    }
+
+    @Override
+    public List<IVaccineProjection> findVaccinesFromCountry(long idCountry) {
+        return vaccineRepository.findVaccinesFromCountry(idCountry);
     }
 
     @Override

@@ -24,6 +24,7 @@ public class Language {
     @Column
     private String name;
 
+
     @JsonBackReference
     @OneToMany(mappedBy = "language")
     private List<LanguageCountries> listLanguagesCountries;

@@ -21,6 +21,11 @@ public class ElectricityServiceImp implements IElectricityService{
     }
 
     @Override
+    public Electricity findElectricityFromCountry(long idCountry) {
+        return electricityRepository.findElectricityFromCountry(idCountry);
+    }
+
+    @Override
     public Electricity addNewElectricity(Electricity newElectricity) {
         return electricityRepository.save(newElectricity);
     }

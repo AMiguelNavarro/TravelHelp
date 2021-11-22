@@ -79,4 +79,16 @@ public class CityController implements ControllersMethodsDTO<City, CityDTO> {
         cityService.deleteCity(idOldCity);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
+
+
+    @Operation(summary = "Obtiene un listado con todas las ciudades de un país")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Listado de ciudades de un país", content = @Content(array = @ArraySchema(schema = @Schema(implementation = City.class))))
+    })
+    @GetMapping(value = "/city/idcountry/{idCountry}", produces = "application/json")
+    public ResponseEntity<List<City>> getCitiesFromCountry(@PathVariable long idCountry) {
+        List<City> cityList = cityService.findCitiesFromCountry(idCountry);
+        return new ResponseEntity<>(cityList, HttpStatus.OK);
+    }
+
 }

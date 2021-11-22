@@ -1,6 +1,9 @@
 package com.tfg.travelhelp.controller;
 
+import com.tfg.travelhelp.domain.EmergencyPhone;
 import com.tfg.travelhelp.domain.Vaccine;
+import com.tfg.travelhelp.dto.ILanguageProjection;
+import com.tfg.travelhelp.dto.IVaccineProjection;
 import com.tfg.travelhelp.service.vaccine.IVaccineService;
 import com.tfg.travelhelp.utils.ControllersMethods;
 import com.tfg.travelhelp.utils.Response;
@@ -75,5 +78,17 @@ public class VaccineController implements ControllersMethods<Vaccine> {
     public ResponseEntity<Response> delete(@PathVariable long id) {
         vaccineService.deleteVaccine(id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
+
+
+
+    @Operation(summary = "Obtiene las vacunas un país")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Listado de vacunas de un país", content = @Content(array = @ArraySchema(schema = @Schema(implementation = EmergencyPhone.class))))
+    })
+    @GetMapping(value = "/vaccine/idCountry/{idCountry}", produces = "application/json")
+    public ResponseEntity<List<IVaccineProjection>> findVaccinesFromCountry(@PathVariable long idCountry) {
+        List<IVaccineProjection> listVaccines = vaccineService.findVaccinesFromCountry(idCountry);
+        return new ResponseEntity<>(listVaccines, HttpStatus.OK);
     }
 }

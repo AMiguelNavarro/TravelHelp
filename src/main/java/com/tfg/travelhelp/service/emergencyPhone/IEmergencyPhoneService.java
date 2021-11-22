@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IEmergencyPhoneService {
     List<EmergencyPhone> findAllEmergencyPhones();
+    List<EmergencyPhone> findEmergencyPhonesFromCountry(long idCountry);
     EmergencyPhone addNewEmergencyPhone(EmergencyPhoneDTO newEmergencyPhoneDto);
     EmergencyPhone modifyEmergencyPhone(long idOldEmergencyPhone, EmergencyPhoneDTO newEmergencyPhoneDto);
     void deleteEmergencyPhone(long idEmergencyPhone);

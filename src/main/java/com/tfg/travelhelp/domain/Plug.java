@@ -1,5 +1,6 @@
 package com.tfg.travelhelp.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class Plug {
     private char type; // Siempre es un caracter https://www.momondo.es/discover/guia-basica-de-los-enchufes-del-mundo
 
     @ManyToMany(mappedBy = "listPlugs")
+    @JsonBackReference
     private List<Country> listCountries;
 }

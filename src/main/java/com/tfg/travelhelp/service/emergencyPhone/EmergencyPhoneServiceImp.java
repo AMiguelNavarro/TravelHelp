@@ -28,6 +28,11 @@ public class EmergencyPhoneServiceImp implements IEmergencyPhoneService {
     }
 
     @Override
+    public List<EmergencyPhone> findEmergencyPhonesFromCountry(long idCountry) {
+        return emergencyPhoneRepository.findEmergencyPhonesFromCountry(idCountry);
+    }
+
+    @Override
     public EmergencyPhone addNewEmergencyPhone(EmergencyPhoneDTO newEmergencyPhoneDto) {
         val country = countryRepository.findById(newEmergencyPhoneDto.getIdCountry())
                 .orElseThrow(() -> new CountryNotFoundException(newEmergencyPhoneDto.getIdCountry()));

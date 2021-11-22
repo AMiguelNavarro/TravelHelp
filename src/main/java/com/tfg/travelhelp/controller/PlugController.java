@@ -1,5 +1,6 @@
 package com.tfg.travelhelp.controller;
 
+import com.tfg.travelhelp.domain.EmergencyPhone;
 import com.tfg.travelhelp.domain.Plug;
 import com.tfg.travelhelp.service.plug.IPlugService;
 import com.tfg.travelhelp.utils.ControllersMethods;
@@ -74,5 +75,16 @@ public class PlugController implements ControllersMethods<Plug> {
     public ResponseEntity<Response> delete(@PathVariable long id) {
         plugService.deletePlug(id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Obtiene un listado con todos los enchufes de un país")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Listado de teléfonos de emergencias de un país", content = @Content(array = @ArraySchema(schema = @Schema(implementation = EmergencyPhone.class))))
+    })
+    @GetMapping(value = "/plug/idCountry/{idCountry}", produces = "application/json")
+    public ResponseEntity<Plug> findPlugsFromCountry(@PathVariable long idCountry) {
+        Plug plug = plugService.findPlugsFromCountry(idCountry);
+        return new ResponseEntity<>(plug, HttpStatus.OK);
     }
 }

@@ -21,6 +21,11 @@ public class CoinServiceServiceImp implements ICoinService{
     }
 
     @Override
+    public Coin findCoinFromCountry(long idCountry) {
+        return coinRepository.findCoinFromCountry(idCountry);
+    }
+
+    @Override
     public Coin addNewCoin(Coin coin) {
         return coinRepository.save(coin);
     }

@@ -28,6 +28,11 @@ public class CityServiceImp implements ICityService{
     }
 
     @Override
+    public List<City> findCitiesFromCountry(long idCountry) {
+        return cityRepository.findCitiesFromCountry(idCountry);
+    }
+
+    @Override
     public City addNewCity(CityDTO newCityDto) {
         val countrySelected = countryRepository.findById(newCityDto.getIdCountry())
                 .orElseThrow(() -> new CountryNotFoundException(newCityDto.getIdCountry()));

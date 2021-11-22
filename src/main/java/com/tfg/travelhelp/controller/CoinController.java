@@ -2,6 +2,7 @@ package com.tfg.travelhelp.controller;
 
 import com.tfg.travelhelp.domain.Coin;
 import com.tfg.travelhelp.domain.Electricity;
+import com.tfg.travelhelp.domain.EmergencyPhone;
 import com.tfg.travelhelp.service.coin.ICoinService;
 import com.tfg.travelhelp.utils.ControllersMethods;
 import com.tfg.travelhelp.utils.Response;
@@ -76,5 +77,16 @@ public class CoinController implements ControllersMethods<Coin> {
     public ResponseEntity<Response> delete(@PathVariable long id) {
         coinService.deleteCoin(id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Obtiene la moneda de un país")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Moneda de un país", content = @Content(array = @ArraySchema(schema = @Schema(implementation = EmergencyPhone.class))))
+    })
+    @GetMapping(value = "/coin/idCountry/{idCountry}", produces = "application/json")
+    public ResponseEntity<Coin> findCoinFromCountry(@PathVariable long idCountry) {
+        Coin coin = coinService.findCoinFromCountry(idCountry);
+        return new ResponseEntity<>(coin, HttpStatus.OK);
     }
 }

@@ -36,4 +36,5 @@ public class City {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idCountry")
     private Country country; // FK con la tabla COUNTRIES
+
 }

@@ -78,4 +78,16 @@ public class EmergencyPhoneController implements ControllersMethodsDTO<Emergency
         emergencyPhoneService.deleteEmergencyPhone(id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
+
+
+    @Operation(summary = "Obtiene un listado con todos los teléfonos de emergencias de un país")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Listado de teléfonos de emergencias de un país", content = @Content(array = @ArraySchema(schema = @Schema(implementation = EmergencyPhone.class))))
+    })
+    @GetMapping(value = "/emergencyphone/idCountry/{idCountry}", produces = "application/json")
+    public ResponseEntity<List<EmergencyPhone>> findEmergencyPhonesFromCountry(@PathVariable long idCountry) {
+        List<EmergencyPhone> emergencyPhonesList = emergencyPhoneService.findEmergencyPhonesFromCountry(idCountry);
+        return new ResponseEntity<>(emergencyPhonesList, HttpStatus.OK);
+    }
+
 }

@@ -2,6 +2,7 @@ package com.tfg.travelhelp.controller;
 
 import com.tfg.travelhelp.domain.EmergencyPhone;
 import com.tfg.travelhelp.domain.Language;
+import com.tfg.travelhelp.dto.ILanguageProjection;
 import com.tfg.travelhelp.service.languaje.ILanguageService;
 import com.tfg.travelhelp.utils.ControllersMethods;
 import com.tfg.travelhelp.utils.Response;
@@ -76,5 +77,17 @@ public class LanguageController implements ControllersMethods<Language> {
     public ResponseEntity<Response> delete(@PathVariable long id) {
         languageService.deleteLanguage(id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
+
+
+
+    @Operation(summary = "Obtiene los idiomas de un país")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Listado de teléfonos de emergencias de un país", content = @Content(array = @ArraySchema(schema = @Schema(implementation = EmergencyPhone.class))))
+    })
+    @GetMapping(value = "/language/idCountry/{idCountry}", produces = "application/json")
+    public ResponseEntity<List<ILanguageProjection>> findLanguageFromCountry(@PathVariable long idCountry) {
+        List<ILanguageProjection> listLanguages = languageService.findLanguageFromCountry(idCountry);
+        return new ResponseEntity<>(listLanguages, HttpStatus.OK);
     }
 }

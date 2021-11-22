@@ -1,6 +1,7 @@
 package com.tfg.travelhelp.controller;
 
 import com.tfg.travelhelp.domain.Electricity;
+import com.tfg.travelhelp.domain.EmergencyPhone;
 import com.tfg.travelhelp.domain.Plug;
 import com.tfg.travelhelp.service.electricity.IElectricityService;
 import com.tfg.travelhelp.utils.ControllersMethods;
@@ -76,5 +77,15 @@ public class ElectricityController implements ControllersMethods<Electricity> {
     public ResponseEntity<Response> delete(@PathVariable long id) {
         electricityService.deleteElectricity(id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Obtiene la electricidad de un país")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Electricidad de un país", content = @Content(array = @ArraySchema(schema = @Schema(implementation = EmergencyPhone.class))))
+    })
+    @GetMapping(value = "/electricity/idCountry/{idCountry}", produces = "application/json")
+    public ResponseEntity<Electricity> findElectricityFromCountry(@PathVariable long idCountry) {
+        Electricity electricity = electricityService.findElectricityFromCountry(idCountry);
+        return new ResponseEntity<>(electricity, HttpStatus.OK);
     }
 }

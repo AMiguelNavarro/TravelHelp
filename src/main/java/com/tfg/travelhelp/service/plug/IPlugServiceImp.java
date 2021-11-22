@@ -21,6 +21,11 @@ public class IPlugServiceImp implements IPlugService{
     }
 
     @Override
+    public Plug findPlugsFromCountry(long idCountry) {
+        return plugRepository.findPlugsFromCountry(idCountry);
+    }
+
+    @Override
     public Plug addNewPlug(Plug newPlug) {
         return plugRepository.save(newPlug);
     }

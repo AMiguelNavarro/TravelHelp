@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IElectricityService {
     List<Electricity> findAllElectricities();
+    Electricity findElectricityFromCountry(long idCountry);
     Electricity addNewElectricity(Electricity newElectricity);
     Electricity modifyElectricity(long idOldElectricity, Electricity newElectricity);
     void deleteElectricity(long idElectricity);
