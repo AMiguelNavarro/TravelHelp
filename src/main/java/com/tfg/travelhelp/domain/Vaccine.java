@@ -5,6 +5,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -33,7 +35,7 @@ public class Vaccine {
     private int durability;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "vaccine")
+    @OneToMany(mappedBy = "vaccine", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<VaccineCountries> listVaccinesCountries;
 
 }

@@ -73,11 +73,11 @@ public class Country {
 
 
     @JsonBackReference(value = "1")
-    @OneToMany(mappedBy = "countryL")
+    @OneToMany(mappedBy = "countryL", cascade = CascadeType.REMOVE, orphanRemoval = true)
     List<LanguageCountries> listLanguagesCountries;
 
     @JsonBackReference(value = "2")
-    @OneToMany(mappedBy = "countryV")
+    @OneToMany(mappedBy = "countryV", cascade = CascadeType.REMOVE, orphanRemoval = true)
     List<VaccineCountries> listVaccinesCountries;
 
 

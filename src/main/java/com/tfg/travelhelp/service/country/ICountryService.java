@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ICountryService {
     List<Country> findAllCountries();
+    Country findCountryById(long idCountry);
     Country addNewCountry(CountryDTO newCountryDto);
     Country modifyCountry(long idOldCountry, CountryDTO newCountryDto);
     void deleteCountry(long idCountry);

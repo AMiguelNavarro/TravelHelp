@@ -41,6 +41,19 @@ public class CountryController implements ControllersMethodsDTO<Country, Country
     }
 
 
+
+
+    @Operation(summary = "Obtiene un país por ID de país")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "País por id", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Country.class))))
+    })
+    @GetMapping(value = "/country/{idCountry}", produces = "application/json")
+    public ResponseEntity<Country> getCountryById(@PathVariable("idCountry") long idCountry) {
+        Country country = countryService.findCountryById(idCountry);
+        return new ResponseEntity<>(country, HttpStatus.OK);
+    }
+
+
     @Operation(summary = "Añade un nuevo país")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201" , description = "Se añade correctamente", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Country.class)))),

@@ -27,6 +27,11 @@ public class CountryServiceImp implements ICountryService{
     }
 
     @Override
+    public Country findCountryById(long idCountry) {
+        return countryRepository.findById(idCountry).orElseThrow(() -> new CountryNotFoundException(idCountry));
+    }
+
+    @Override
     public Country addNewCountry(CountryDTO newCountryDto) {
         val coin = coinRepository.findById(newCountryDto.getIdCoin())
                 .orElseThrow(() -> new CoinNotFoundException(newCountryDto.getIdCoin()));
