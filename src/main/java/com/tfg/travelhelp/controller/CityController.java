@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+
 @RestController
 @Tag(name = "Cities", description = "Listado de ciudades")
 public class CityController implements ControllersMethodsDTO<City, CityDTO> {
